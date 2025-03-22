@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'base',  # L’application de gestion des bases
+    'rest_framework',
+    'corsheaders',  # Gestion du CORS pour React
+    # 'prediction',  # L’application pour l’IA et les prévisions
+    # 'users',  # Gestion des utilisateurs
 ]
 
 MIDDLEWARE = [
@@ -48,6 +53,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Activer le CORS pour autoriser React
+CORS_ALLOW_ALL_ORIGINS = True
+
+# Configurer Django Rest Framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 
 ROOT_URLCONF = 'backend.urls'
 
